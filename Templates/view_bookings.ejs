@@ -1,0 +1,16 @@
+<h2>All Bookings 📘</h2>
+<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Destination</th><th>Date</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+  <% (bookings || []).forEach(function(b) { %>
+  <tr>
+    <td><%= b.name %></td>
+    <td><%= b.destination && b.destination.name ? b.destination.name : b.destination %></td>
+    <td><%= b.date %></td>
+    <td><%= b.status || '' %></td>
+  </tr>
+  <% }); %>
+  </tbody>
+</table>

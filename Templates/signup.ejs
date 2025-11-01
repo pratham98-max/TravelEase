@@ -1,0 +1,21 @@
+<div class="container mt-5" style="max-width: 500px;">
+  <h3 class="text-center mb-4">📝 Sign Up</h3>
+  <form method="POST" action="/api/users/signup">
+    <div class="mb-3">
+      <label for="username">Username</label>
+      <input id="username" type="text" name="username" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Create Account</button>
+  </form>
+  <p class="text-center mt-3">
+    Already have an account? <a href="/login">Login</a>
+  </p>
+</div>

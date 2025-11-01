@@ -1,0 +1,16 @@
+<h2>All Reviews 🌟</h2>
+<table class="table">
+  <thead>
+    <tr><th>User</th><th>Destination</th><th>Rating</th><th>Comment</th></tr>
+  </thead>
+  <tbody>
+  <% (reviews || []).forEach(function(r) { %>
+  <tr>
+    <td><%= r.user && r.user.username ? r.user.username : r.user %></td>
+    <td><%= r.destination && r.destination.name ? r.destination.name : r.destination %></td>
+    <td><%= r.rating %></td>
+    <td><%= r.comment %></td>
+  </tr>
+  <% }); %>
+  </tbody>
+</table>

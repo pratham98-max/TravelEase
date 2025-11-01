@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">🏨 Explore Hotels & Resorts</h2>
+        <a href="/dashboard" class="btn btn-dark">📊 Dashboard</a>
+    </div>
+
+    <% if (query) { %>
+        <h5 class="text-muted">Search results for "<%= query %>"</h5>
+    <% } %>
+
+    <div class="row mt-4">
+        <% (destinations || []).forEach(function(destination) { %>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg h-100 border-0">
+                <% if (destination.image) { %>
+                <img src="<%= destination.image %>" class="card-img-top" alt="<%= destination.name %>" 
+                     style="height: 220px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                <% } else { %>
+                <img src="/static/images/default.jpg" class="card-img-top" alt="No image available"
+                     style="height: 220px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                <% } %>
+                
+                <div class="card-body">
+                    <h5 class="card-title fw-bold"><%= destination.name %></h5>
+                    <p class="card-text text-muted">📍 <%= destination.location %></p>
+                    <% if (destination.description) { %>
+                    <p class="text-secondary" style="font-size: 0.9rem;"><%= destination.description %></p>
+                    <% } %>
+                    <p class="mb-3"><strong>💰 Price:</strong> ₹<%= destination.price %></p>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="/destinations/<%= destination._id %>" class="btn btn-primary w-50 me-2">Book Now</a>
+                        <a href="/api/reviews/destination/<%= destination._id %>" class="btn btn-outline-secondary w-50">View / Add Reviews</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+
+    <% if (!destinations || destinations.length === 0) { %>
+        <div class="text-center mt-5">
+            <h5 class="text-muted">No destinations found 😞</h5>
+        </div>
+    <% } %>
+</div>
